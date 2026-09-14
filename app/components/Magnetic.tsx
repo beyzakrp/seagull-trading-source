@@ -1,9 +1,9 @@
 "use client";
 
-import { cloneElement, isValidElement, useRef, type PointerEvent, type ReactElement } from "react";
+import { useRef, type PointerEvent, type ReactElement } from "react";
 
 export function Magnetic({ children, strength = 0.35 }: { children: ReactElement; strength?: number }) {
-  const ref = useRef<HTMLElement | null>(null);
+  const ref = useRef<HTMLSpanElement | null>(null);
   // Magnetic already owns this element's `transform` (translate follows the
   // pointer), so press feedback has to be composed into that same inline
   // transform rather than left to a CSS `:active` rule — a separate CSS rule
@@ -38,9 +38,7 @@ export function Magnetic({ children, strength = 0.35 }: { children: ReactElement
     applyTransform();
   }
 
-  // Respond on pointer-down, not on release (see CLAUDE.md, Apple Design
-  // pass) — the same instant-feedback rule the admin panel's Button applies
-  // via Motion's whileTap, translated to this component's plain-CSS world.
+  // Compose press feedback with the pointer translation.
   function handleDown(event: PointerEvent<HTMLElement>) {
     if (event.pointerType !== "mouse") return;
     pressed.current = true;
@@ -53,14 +51,19 @@ export function Magnetic({ children, strength = 0.35 }: { children: ReactElement
     applyTransform();
   }
 
-  if (!isValidElement(children)) return children;
-
-  return cloneElement(children as ReactElement<any>, {
-    ref,
-    onPointerMove: handleMove,
-    onPointerLeave: handleLeave,
-    onPointerDown: handleDown,
-    onPointerUp: handleUp,
-    className: `magnetic ${(children.props as any).className ?? ""}`.trim(),
-  });
+  // Own the animated DOM node instead of cloning a Server Component child.
+  // This keeps the child's server-rendered and hydrated attributes identical.
+  return (
+    <span
+      ref={ref}
+      className="magnetic"
+      onPointerMove={handleMove}
+      onPointerLeave={handleLeave}
+      onPointerDown={handleDown}
+      onPointerUp={handleUp}
+      onPointerCancel={handleLeave}
+    >
+      {children}
+    </span>
+  );
 }

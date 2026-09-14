@@ -1,34 +1,19 @@
-# Seagull Trading Website — Quick Start
+# Seagull Trading — Frontend only
 
-## Requirements
+The site contains Home, Services, Work, QR Menu (marketing/demo), and About pages. Existing design, animations and contact form are preserved. The contact form opens the visitor's email application.
 
-- Node.js 22.13 or newer
-- npm
+Admin and business portals, login, QR generation, dynamic customer menus, APIs, database and image uploads have been removed. No Cloudflare runtime or database is required.
 
-## Run locally
+## Development
 
-```bash
-npm install
-npm run dev
-```
+Use Node.js 22.13 or newer. Install with `npm ci`, then run `npm run dev`.
 
-Then open the local address shown in the terminal.
+## Build and preview
 
-## Where to edit
+Run `npm run build` to generate the static `out/` directory. Run `npm start` to preview it at http://127.0.0.1:3000. Run `node --test tests/rendered-html.test.mjs` to verify all five exported pages and absence of backend routes.
 
-- `app/page.tsx`: page content, portfolio projects, services, QR menu demo and interactions
-- `app/globals.css`: complete visual design, colors, typography and responsive layout
-- `app/layout.tsx`: page title, description and metadata
-- `public/`: logos and hero image
+## Plesk upload
 
-## Build for production
+Upload the contents of `out/` into the domain's `httpdocs` directory, including `_next` and every page directory. The root should contain `index.html`. Node.js is needed only to build locally, not on the hosting server. Configure index.html as the default document. Do not upload source files or node_modules.
 
-```bash
-npm run build
-```
-
-The package intentionally excludes `node_modules`, build output, Git history,
-temporary runtime files and the original hosted-site project binding.
-
-Before publishing, replace the sample email address `hello@seagulltrade.me`
-and placeholder social links with the real Seagull Trading contact details.
+Changes in this checkout do not automatically update a deployed site or delete previously hosted data.

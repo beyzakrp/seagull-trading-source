@@ -1,4 +1,3 @@
 {
-  "d1": "DB",
-  "r2": "MENU_IMAGES"
+  "static": { "directory": "out" }
 }

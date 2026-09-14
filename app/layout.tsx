@@ -8,10 +8,7 @@ export const metadata: Metadata = {
   icons: { icon: "/seagull-blue-black.svg", shortcut: "/seagull-blue-black.svg" },
 };
 
-// Bare shell only. The marketing Header/Footer/Cursor live in
-// app/(marketing)/layout.tsx — /admin/*, /menu/[slug] and /q/[number] are
-// deliberately NOT marketing pages and must not inherit that chrome (see
-// CLAUDE.md, Coding Rules).
+// Marketing navigation is shared in app/(marketing)/layout.tsx.
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
