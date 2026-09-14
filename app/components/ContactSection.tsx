@@ -9,7 +9,7 @@ export function ContactSection() {
           <p className="kicker kicker-light">Start a project</p>
           <h2>Let’s make your business impossible to overlook.</h2>
           <p>Tell us what you are building, improving or launching. We’ll come back with a clear next step.</p>
-          <a href="mailto:hello@seagulltrade.me">hello@seagulltrade.me <span>↗</span></a>
+          <a href="mailto:info@seagulltrade.me">info@seagulltrade.me <span>↗</span></a>
         </Reveal>
         <ContactForm />
       </div>

@@ -12,7 +12,7 @@ export function ContactForm() {
     const body = encodeURIComponent(
       `Name: ${data.get("name")}\nEmail: ${data.get("email")}\nBusiness: ${data.get("business")}\n\nProject:\n${data.get("message")}`,
     );
-    window.location.href = `mailto:hello@seagulltrade.me?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:info@seagulltrade.me?subject=${subject}&body=${body}`;
   }
 
   return (

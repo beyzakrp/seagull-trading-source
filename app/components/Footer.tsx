@@ -17,7 +17,7 @@ export function Footer() {
         </div>
         <div>
           <span>Connect</span>
-          <a href="mailto:hello@seagulltrade.me">Email</a>
+          <a href="mailto:info@seagulltrade.me">Email</a>
           <Link href="/#contact">Project enquiry</Link>
           <Link href="/">Instagram</Link>
         </div>
